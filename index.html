@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConciliaMx - Conciliacion Bancaria Automatica</title>
+    <meta name="description" content="Concilia estados de cuenta bancarios con tus ventas en segundos. Bot de Telegram para contadores.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --azul: #0a1628;
+            --azul-claro: #152238;
+            --verde: #10b981;
+            --verde-oscuro: #059669;
+            --plata: #c0c0c0;
+            --blanco: #ffffff;
+            --gris: #94a3b8;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--azul);
+            color: var(--blanco);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--verde), var(--verde-oscuro));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .logo-text span:first-child { color: var(--verde); }
+        .logo-text span:last-child { color: var(--plata); }
+        nav a {
+            color: var(--gris);
+            text-decoration: none;
+            margin-left: 24px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--verde); }
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at top, var(--azul-claro) 0%, var(--azul) 70%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--blanco), var(--plata));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gris);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--verde), var(--verde-oscuro));
+            color: var(--blanco);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+        }
+        .btn-secondary {
+            display: inline-block;
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--plata);
+            text-decoration: none;
+            border: 2px solid var(--plata);
+            border-radius: 12px;
+            font-weight: 600;
+            margin-left: 16px;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background: var(--plata);
+            color: var(--azul);
+        }
+        section { padding: 80px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gris);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .step {
+            background: var(--azul-claro);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s;
+        }
+        .step:hover { transform: translateY(-5px); }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--verde), var(--verde-oscuro));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        .step h3 { font-size: 1.3rem; margin-bottom: 12px; }
+        .step p { color: var(--gris); }
+        .pricing { background: var(--azul-claro); }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .plan {
+            background: var(--azul);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .plan:hover { transform: translateY(-5px); }
+        .plan.destacado {
+            border: 2px solid var(--verde);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+        .plan.destacado::before {
+            content: "MAS POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--verde);
+            color: var(--blanco);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .plan h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .plan .precio {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--verde);
+            margin: 20px 0;
+        }
+        .plan .precio small {
+            font-size: 1rem;
+            color: var(--gris);
+            font-weight: normal;
+        }
+        .plan ul {
+            list-style: none;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .plan ul li {
+            padding: 8px 0;
+            color: var(--gris);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .plan ul li::before {
+            content: "✓ ";
+            color: var(--verde);
+            font-weight: bold;
+        }
+        .plan .btn-plan {
+            display: block;
+            padding: 12px;
+            background: var(--verde);
+            color: var(--blanco);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .plan .btn-plan:hover { background: var(--verde-oscuro); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .btn-secondary { margin-left: 0; margin-top: 16px; display: block; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">
+                    <span>Concilia</span><span>Mx</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#precios">Precios</a>
+                <a href="#afiliados">Afiliados</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1>Concilia tu banco en segundos</h1>
+            <p>Bot de Telegram que cruza automaticamente tu estado de cuenta bancario con tus ventas. Reporte Excel con indicadores visuales listo en menos de 1 minuto.</p>
+            <a href="https://t.me/conciliacionMx" class="btn-primary">Probar bot en Telegram</a>
+            <a href="#precios" class="btn-secondary">Ver precios</a>
+        </div>
+    </section>
+    <section id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Como funciona</h2>
+            <p class="section-subtitle">Tres pasos. Sin instalaciones. Sin registros complicados.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Sube tu PDF bancario</h3>
+                    <p>Envia el estado de cuenta de BBVA, Banorte, Santander, HSBC o Banamex directamente en el chat de Telegram.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Sube tu Excel de ventas</h3>
+                    <p>Adjunta tu archivo de ventas o facturacion en formato Excel (.xlsx o .xls).</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Recibe tu reporte</h3>
+                    <p>En segundos recibes un Excel con cada movimiento clasificado: conciliado, duplicado, diferencia. Listo para revisar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="precios" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Paquetes y precios</h2>
+            <p class="section-subtitle">Pago unico por paquete. Vigencia de 30 dias. Sin mensualidades.</p>
+            <div class="pricing-grid">
+                <div class="plan">
+                    <h3>Inicial</h3>
+                    <div class="precio">$399<small> MXN</small></div>
+                    <ul>
+                        <li>1 conciliacion</li>
+                        <li>Hasta 500 lineas</li>
+                        <li>Vigencia 30 dias</li>
+                        <li>Soporte por Telegram</li>
+                    </ul>
+                    <a href="https://t.me/conciliacionMx" class="btn-plan">Empezar</a>
+                </div>
+                <div class="plan">
+                    <h3>Basico</h3>
+                    <div class="precio">$800<small> MXN</small></div>
+                    <ul>
+                        <li>5 conciliaciones</li>
+                        <li>Hasta 500 lineas</li>
+                        <li>Vigencia 30 dias</li>
+                        <li>Soporte por Telegram</li>
+                    </ul>
+                    <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Basico</a>
+                </div>
+                <div class="plan destacado">
+                    <h3>Profesional</h3>
+                    <div class="precio">$2,000<small> MXN</small></div>
+                    <ul>
+                        <li>15 conciliaciones</li>
+                        <li>Hasta 2,000 lineas</li>
+                        <li>Vigencia 30 dias</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Profesional</a>
+                </div>
+                <div class="plan">
+                    <h3>Despacho</h3>
+                    <div class="precio">$3,500<small> MXN</small></div>
+                    <ul>
+                        <li>30 conciliaciones</li>
+                        <li>Hasta 5,000 lineas</li>
+                        <li>Vigencia 30 dias</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Despacho</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="afiliados" class="afiliados" style="background: linear-gradient(135deg, var(--azul-claro), var(--azul)); text-align: center; padding: 80px 0;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; padding: 60px 40px; background: rgba(16, 185, 129, 0.05); border: 1px solid var(--verde); border-radius: 20px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Programa de Afiliados</h2>
+                <div style="font-size: 4rem; font-weight: 800; color: var(--verde); margin: 20px 0;">20%</div>
+                <p style="color: var(--gris); font-size: 1.1rem; margin-bottom: 30px;">Gana el 20% de comision en la primera compra de cada contador que refieras. Las comisiones se liberan 15 dias despues del pago. Minimo de retiro: $500 MXN.</p>
+                <a href="https://t.me/conciliacionMx" class="btn-primary">Unirme al programa</a>
+            </div>
+        </div>
+    </section>
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas frecuentes</h2>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Que bancos soporta?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">BBVA, Banorte, Santander, HSBC y Banamex. Estamos agregando mas bancos constantemente.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Mis datos estan seguros?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Tus PDFs y Excel se procesan en memoria y se eliminan inmediatamente despues de generar el reporte. No almacenamos estados de cuenta ni datos bancarios.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Que pasa si me paso del limite de lineas?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">El bot te avisa que excediste el limite de tu plan y te sugiere contratar el siguiente paquete o actualizar tu plan actual.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Los paquetes tienen vigencia?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Si, todos los paquetes tienen vigencia de 30 dias a partir de la activacion. Esto refleja el ciclo natural de la contabilidad mensual.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Como pago?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Aceptamos pagos con PayPal. Al elegir tu paquete, el bot te genera un enlace de pago seguro. Una vez confirmado, tu licencia se activa automaticamente.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Puedo ser afiliado sin ser cliente?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Si. Cualquier persona puede registrarse como afiliado con el comando /afiliado en el bot y empezar a referir clientes inmediatamente.</div>
+            </div>
+        </div>
+    </section>
+    <section id="contacto" style="background: var(--azul-claro); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <p class="section-subtitle">Tienes dudas o necesitas soporte? Escribenos.</p>
+            <form class="contact-form" name="contacto" method="POST" data-netlify="true" style="max-width: 600px; margin: 0 auto;">
+                <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem;">
+                <input type="email" name="email" placeholder="Tu correo" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem;">
+                <textarea name="mensaje" placeholder="En que podemos ayudarte?" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem; min-height: 150px; font-family: inherit;"></textarea>
+                <button type="submit" style="width: 100%; padding: 16px; background: var(--verde); color: var(--blanco); border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+    <footer style="padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); color: var(--gris);">
+        <div class="container">
+            <p>2026 ConciliaMx. Todos los derechos reservados.</p>
+            <p>Bot oficial: <a href="https://t.me/conciliacionMx" style="color: var(--verde); text-decoration: none;">@conciliacionMx</a></p>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(q) {
+            q.addEventListener('click', function() {
+                var answer = q.nextElementSibling;
+                var icon = q.querySelector('span');
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.textContent = '+';
+                } else {
+                    answer.style.display = 'block';
+                    icon.textContent = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
