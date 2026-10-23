@@ -420,7 +420,8 @@
             <div class="afiliados-card">
                 <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Programa de Afiliados</h2>
                 <p style="color: var(--gris); margin-bottom: 24px;">Gana el 20% de comisión en la primera compra de cada contador que refieras. Las comisiones se liberan 15 días después del pago. Mínimo de retiro: $500 MXN.</p>
-                <a href="https://t.me/conciliacionMx" class="btn-secondary" style="margin-left: 0;">Conocer el programa</a>
+                <a href="https://t.me/conciliacionMx" class="btn-secondary" style="margin-left: 0;">Abrir el bot y escribir /afiliado</a>
+                <p style="color: var(--gris); margin-top: 16px; font-size: 0.95rem;">Para registrarte como afiliado, escribe el comando /afiliado en el bot.</p>
             </div>
         </div>
     </section>
@@ -428,7 +429,8 @@
         <div class="container">
             <h2 class="section-title">Contacto</h2>
             <p class="section-subtitle">¿Tienes dudas o necesitas soporte? Escríbenos.</p>
-            <form class="contact-form" name="contacto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="max-width: 600px; margin: 0 auto;">
+            <form class="contact-form" name="contacto" method="POST" action="/gracias.html" data-netlify="true" data-netlify-honeypot="bot-field" style="max-width: 600px; margin: 0 auto;">
+                <input type="hidden" name="form-name" value="contacto">
                 <p hidden>
                     <label>No llenar este campo: <input name="bot-field"></label>
                 </p>
