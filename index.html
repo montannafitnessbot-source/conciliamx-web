@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConciliaMx - Conciliacion Bancaria Automatica</title>
-    <meta name="description" content="Concilia estados de cuenta bancarios con tus ventas en segundos. Bot de Telegram para contadores.">
+    <title>ConciliaMx - Conciliación Bancaria Automática</title>
+    <meta name="description" content="Concilia estados de cuenta bancarios con tus ventas en aproximadamente un minuto. Bot de Telegram para contadores.">
+    <meta property="og:title" content="ConciliaMx - Conciliación Bancaria Automática">
+    <meta property="og:description" content="Bot de Telegram que cruza tu estado de cuenta BBVA con tu Excel de ventas y te entrega un reporte Excel en aproximadamente un minuto.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conciliamx.netlify.app">
+    <meta property="og:image" content="https://conciliamx.netlify.app/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -177,7 +183,7 @@
             box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
         }
         .plan.destacado::before {
-            content: "MAS POPULAR";
+            content: "MÁS POPULAR";
             position: absolute;
             top: -12px;
             left: 50%;
@@ -227,6 +233,17 @@
             transition: background 0.3s;
         }
         .plan .btn-plan:hover { background: var(--verde-oscuro); }
+        .faq-answer { display: none; }
+        .faq-item.open .faq-answer { display: block; }
+        .afiliados-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--azul-claro);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            text-align: center;
+        }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
@@ -240,47 +257,47 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <img src="logo.png" alt="ConciliaMx" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;">
+                <img src="logo.png" alt="ConciliaMx" width="45" height="45" loading="eager" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;">
                 <div class="logo-text">
                     <span>Concilia</span><span>Mx</span>
                 </div>
             </div>
             <nav>
-                <a href="#como-funciona">Como funciona</a>
+                <a href="#como-funciona">Cómo funciona</a>
                 <a href="#precios">Precios</a>
-                <a href="#afiliados">Afiliados</a>
                 <a href="#faq">FAQ</a>
+                <a href="#afiliados">Afiliados</a>
                 <a href="#contacto">Contacto</a>
             </nav>
         </div>
     </header>
     <section class="hero">
         <div class="container">
-            <h1>Concilia tu banco en segundos</h1>
-            <p>Bot de Telegram que cruza automaticamente tu estado de cuenta bancario con tus ventas. Reporte Excel con indicadores visuales listo en menos de 1 minuto.</p>
+            <h1>Concilia tu banco en unos minutos</h1>
+            <p>Bot de Telegram que cruza automáticamente tu estado de cuenta bancario con tus ventas. Reporte Excel con indicadores visuales listo en aproximadamente un minuto.</p>
             <a href="https://t.me/conciliacionMx" class="btn-primary">Probar bot en Telegram</a>
             <a href="#precios" class="btn-secondary">Ver precios</a>
         </div>
     </section>
     <section id="como-funciona">
         <div class="container">
-            <h2 class="section-title">Como funciona</h2>
+            <h2 class="section-title">Cómo funciona</h2>
             <p class="section-subtitle">Tres pasos. Sin instalaciones. Sin registros complicados.</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Sube tu PDF bancario</h3>
-                    <p>Envia tu estado de cuenta de BBVA directamente en el chat de Telegram. Mas bancos proximamente.</p>
+                    <p>Envía tu estado de cuenta de BBVA directamente en el chat de Telegram. Más bancos próximamente.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Sube tu Excel de ventas</h3>
-                    <p>Adjunta tu archivo de ventas o facturacion en formato Excel (.xlsx o .xls).</p>
+                    <p>Adjunta tu archivo de ventas o facturación en formato Excel (.xlsx o .xls).</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Recibe tu reporte</h3>
-                    <p>En segundos recibes un Excel con cada movimiento clasificado: conciliado, duplicado, diferencia. Listo para revisar.</p>
+                    <p>En aproximadamente un minuto recibes un Excel con cada movimiento clasificado: conciliado, duplicado, diferencia. Listo para revisar.</p>
                 </div>
             </div>
         </div>
@@ -288,37 +305,37 @@
     <section id="precios" class="pricing">
         <div class="container">
             <h2 class="section-title">Paquetes y precios</h2>
-            <p class="section-subtitle">Pago unico por paquete. Vigencia de 30 dias. Sin mensualidades.</p>
+            <p class="section-subtitle">Pago único por paquete. Vigencia de 30 días. Sin mensualidades.</p>
             <div class="pricing-grid">
                 <div class="plan">
                     <h3>Inicial</h3>
                     <div class="precio">$399<small> MXN</small></div>
                     <ul>
-                        <li>1 conciliacion</li>
-                        <li>Hasta 500 lineas</li>
-                        <li>Vigencia 30 dias</li>
+                        <li>1 conciliación</li>
+                        <li>Hasta 500 líneas</li>
+                        <li>Vigencia 30 días</li>
                         <li>Soporte por Telegram</li>
                     </ul>
                     <a href="https://t.me/conciliacionMx" class="btn-plan">Empezar</a>
                 </div>
                 <div class="plan">
-                    <h3>Basico</h3>
+                    <h3>Básico</h3>
                     <div class="precio">$800<small> MXN</small></div>
                     <ul>
                         <li>5 conciliaciones</li>
-                        <li>Hasta 500 lineas</li>
-                        <li>Vigencia 30 dias</li>
+                        <li>Hasta 500 líneas</li>
+                        <li>Vigencia 30 días</li>
                         <li>Soporte por Telegram</li>
                     </ul>
-                    <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Basico</a>
+                    <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Básico</a>
                 </div>
                 <div class="plan destacado">
                     <h3>Profesional</h3>
                     <div class="precio">$2,000<small> MXN</small></div>
                     <ul>
                         <li>15 conciliaciones</li>
-                        <li>Hasta 2,000 lineas</li>
-                        <li>Vigencia 30 dias</li>
+                        <li>Hasta 2,000 líneas</li>
+                        <li>Vigencia 30 días</li>
                         <li>Soporte prioritario</li>
                     </ul>
                     <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Profesional</a>
@@ -328,8 +345,8 @@
                     <div class="precio">$3,500<small> MXN</small></div>
                     <ul>
                         <li>30 conciliaciones</li>
-                        <li>Hasta 5,000 lineas</li>
-                        <li>Vigencia 30 dias</li>
+                        <li>Hasta 5,000 líneas</li>
+                        <li>Vigencia 30 días</li>
                         <li>Soporte prioritario</li>
                     </ul>
                     <a href="https://t.me/conciliacionMx" class="btn-plan">Elegir Despacho</a>
@@ -337,73 +354,118 @@
             </div>
         </div>
     </section>
-    <section id="afiliados" class="afiliados" style="background: linear-gradient(135deg, var(--azul-claro), var(--azul)); text-align: center; padding: 80px 0;">
-        <div class="container">
-            <div style="max-width: 800px; margin: 0 auto; padding: 60px 40px; background: rgba(16, 185, 129, 0.05); border: 1px solid var(--verde); border-radius: 20px;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Programa de Afiliados</h2>
-                <div style="font-size: 4rem; font-weight: 800; color: var(--verde); margin: 20px 0;">20%</div>
-                <p style="color: var(--gris); font-size: 1.1rem; margin-bottom: 30px;">Gana el 20% de comision en la primera compra de cada contador que refieras. Las comisiones se liberan 15 dias despues del pago. Minimo de retiro: $500 MXN.</p>
-                <a href="https://t.me/conciliacionMx" class="btn-primary">Unirme al programa</a>
-            </div>
-        </div>
-    </section>
     <section id="faq">
         <div class="container">
             <h2 class="section-title">Preguntas frecuentes</h2>
             <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
-                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Que bancos soporta?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
-                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Actualmente BBVA (unico soportado y probado). Estamos agregando mas bancos constantemente.</div>
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Qué bancos soporta?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Actualmente BBVA (único soportado y probado). Estamos agregando más bancos constantemente.</div>
             </div>
             <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
-                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Mis datos estan seguros?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
-                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Tus PDFs y Excel se procesan en memoria y se eliminan inmediatamente despues de generar el reporte. No almacenamos estados de cuenta ni datos bancarios.</div>
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Qué archivos acepta el bot?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Tu estado de cuenta de BBVA en PDF y tu archivo de ventas o facturación en Excel (.xlsx o .xls).</div>
             </div>
             <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
-                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Que pasa si me paso del limite de lineas?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
-                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">El bot te avisa que excediste el limite de tu plan y te sugiere contratar el siguiente paquete o actualizar tu plan actual.</div>
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿El bot pide mis contraseñas o accesos?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">No. El bot nunca te pedirá contraseñas bancarias, tu e.firma ni accesos al SAT. No compartas esos datos por Telegram ni por ningún chat.</div>
             </div>
             <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
-                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Los paquetes tienen vigencia?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
-                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Si, todos los paquetes tienen vigencia de 30 dias a partir de la activacion. Esto refleja el ciclo natural de la contabilidad mensual.</div>
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Mis datos están seguros?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Tus archivos (PDF y Excel) se procesan en memoria y no se guardan; se eliminan al generar el reporte. Solo conservamos los datos técnicos de tu pago y tu licencia: ID de Telegram, paquete, fecha e importe.</div>
             </div>
             <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
-                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Como pago?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
-                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Aceptamos pagos con PayPal. Al elegir tu paquete, el bot te genera un enlace de pago seguro. Una vez confirmado, tu licencia se activa automaticamente.</div>
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Qué pasa si un movimiento no coincide con ninguna venta?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Se marca como "sin factura" en el reporte Excel, para que puedas revisarlo por separado.</div>
             </div>
             <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
-                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">Puedo ser afiliado sin ser cliente?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
-                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Si. Cualquier persona puede registrarse como afiliado con el comando /afiliado en el bot y empezar a referir clientes inmediatamente.</div>
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Cuántas conciliaciones y líneas incluye cada paquete?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Inicial: 1 conciliación, hasta 500 líneas. Básico: 5 conciliaciones, hasta 500 líneas. Profesional: 15 conciliaciones, hasta 2,000 líneas. Despacho: 30 conciliaciones, hasta 5,000 líneas.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Qué pasa si me paso del límite de líneas?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">El bot te avisa que excediste el límite de tu plan y te sugiere contratar el siguiente paquete o actualizar tu plan actual.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Los paquetes tienen vigencia?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Sí, todos los paquetes tienen vigencia de 30 días a partir de la activación. Esto refleja el ciclo natural de la contabilidad mensual.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Cómo se suman las compras?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Cada compra suma sus conciliaciones a tu saldo y renueva la vigencia a 30 días a partir de esa compra.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Cómo pago?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Aceptamos pagos con PayPal. Al elegir tu paquete, el bot te genera un enlace de pago seguro. Una vez confirmado, tu licencia se activa automáticamente.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Hay devoluciones?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Sí. Si compraste un paquete y no has usado ninguna conciliación, te devolvemos el pago completo dentro de los primeros 7 días. Si el bot falló y no entregó tu reporte, te reponemos esa conciliación o te devolvemos el pago, a tu elección, previa revisión del caso por soporte. Las conciliaciones ya entregadas no se devuelven.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Emiten factura?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Por ahora no emitimos factura; recibes tu comprobante de pago de PayPal.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Dónde pido soporte?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Puedes escribir a nuestro soporte en Telegram: <a href="https://t.me/Soporte_conciliamx" style="color: var(--verde); text-decoration: none;">@Soporte_conciliamx</a>. También puedes usar el formulario de contacto de esta página.</div>
+            </div>
+            <div class="faq-item" style="background: var(--azul-claro); margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+                <div class="faq-question" style="padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">¿Puedo ser afiliado sin ser cliente?<span style="color: var(--verde); font-size: 1.5rem;">+</span></div>
+                <div class="faq-answer" style="padding: 0 24px 24px; color: var(--gris);">Sí. Cualquier persona puede registrarse como afiliado con el comando /afiliado en el bot y empezar a referir clientes inmediatamente.</div>
+            </div>
+        </div>
+    </section>
+    <section id="afiliados" style="padding: 60px 0;">
+        <div class="container">
+            <div class="afiliados-card">
+                <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Programa de Afiliados</h2>
+                <p style="color: var(--gris); margin-bottom: 24px;">Gana el 20% de comisión en la primera compra de cada contador que refieras. Las comisiones se liberan 15 días después del pago. Mínimo de retiro: $500 MXN.</p>
+                <a href="https://t.me/conciliacionMx" class="btn-secondary" style="margin-left: 0;">Conocer el programa</a>
             </div>
         </div>
     </section>
     <section id="contacto" style="background: var(--azul-claro); padding: 80px 0;">
         <div class="container">
             <h2 class="section-title">Contacto</h2>
-            <p class="section-subtitle">Tienes dudas o necesitas soporte? Escribenos.</p>
-            <form class="contact-form" name="contacto" method="POST" data-netlify="true" style="max-width: 600px; margin: 0 auto;">
+            <p class="section-subtitle">¿Tienes dudas o necesitas soporte? Escríbenos.</p>
+            <form class="contact-form" name="contacto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="max-width: 600px; margin: 0 auto;">
+                <p hidden>
+                    <label>No llenar este campo: <input name="bot-field"></label>
+                </p>
                 <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem;">
                 <input type="email" name="email" placeholder="Tu correo" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem;">
-                <textarea name="mensaje" placeholder="En que podemos ayudarte?" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem; min-height: 150px; font-family: inherit;"></textarea>
+                <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" required style="width: 100%; padding: 16px; margin-bottom: 16px; background: var(--azul); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--blanco); font-size: 1rem; min-height: 150px; font-family: inherit;"></textarea>
                 <button type="submit" style="width: 100%; padding: 16px; background: var(--verde); color: var(--blanco); border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">Enviar mensaje</button>
             </form>
+        </div>
+    </section>
+    <section id="privacidad" style="padding: 60px 0;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 16px;">Aviso de privacidad</h2>
+                <p style="color: var(--gris); margin-bottom: 16px;">Los archivos que envías al bot (estado de cuenta en PDF y Excel de ventas) se procesan en memoria y no se guardan; se eliminan al generar tu reporte. Solo conservamos los datos técnicos de tu pago y tu licencia: ID de Telegram, paquete, fecha e importe. No pedimos ni almacenamos contraseñas bancarias, e.firma ni accesos al SAT.</p>
+                <h2 style="font-size: 1.8rem; margin: 32px 0 16px;">Términos del servicio</h2>
+                <p style="color: var(--gris); margin-bottom: 16px;">ConciliaMx es un bot de Telegram que cruza tu estado de cuenta de BBVA con tu Excel de ventas y te entrega un reporte en Excel. Los paquetes se pagan por PayPal, se activan al confirmarse el pago y tienen vigencia de 30 días; cada compra suma sus conciliaciones a tu saldo y renueva la vigencia. El programa de afiliados paga el 20% de comisión sobre la primera compra de cada referido, liberada 15 días después del pago, con un mínimo de retiro de $500 MXN. Devoluciones: si compraste y no has usado ninguna conciliación, te devolvemos el pago completo dentro de los primeros 7 días; si el bot falló y no entregó tu reporte, se repone esa conciliación o se devuelve el pago, a tu elección, previa revisión del caso por soporte; las conciliaciones ya entregadas no se devuelven. Por ahora no emitimos factura; recibes tu comprobante de pago de PayPal. Soporte: <a href="https://t.me/Soporte_conciliamx" style="color: var(--verde); text-decoration: none;">@Soporte_conciliamx</a> en Telegram o el formulario de contacto de esta página.</p>
+            </div>
         </div>
     </section>
     <footer style="padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); color: var(--gris);">
         <div class="container">
             <p>2026 ConciliaMx. Todos los derechos reservados.</p>
             <p>Bot oficial: <a href="https://t.me/conciliacionMx" style="color: var(--verde); text-decoration: none;">@conciliacionMx</a></p>
+            <p><a href="#privacidad" style="color: var(--verde); text-decoration: none;">Aviso de privacidad</a> · <a href="#privacidad" style="color: var(--verde); text-decoration: none;">Términos del servicio</a></p>
         </div>
     </footer>
     <script>
         document.querySelectorAll('.faq-question').forEach(function(q) {
             q.addEventListener('click', function() {
-                var answer = q.nextElementSibling;
+                var item = q.parentElement;
                 var icon = q.querySelector('span');
-                if (answer.style.display === 'block') {
-                    answer.style.display = 'none';
+                if (item.classList.contains('open')) {
+                    item.classList.remove('open');
                     icon.textContent = '+';
                 } else {
-                    answer.style.display = 'block';
+                    item.classList.add('open');
                     icon.textContent = '-';
                 }
             });
