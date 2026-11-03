@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://conciliamx.netlify.app/sitemap.xml
